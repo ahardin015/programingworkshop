@@ -1,4 +1,6 @@
-programingworkshop
+C
 ==================
 
-Atmo graduate student computing workshop 
+In this folder contains several C programs that deal with the basics of C. 
+
+
