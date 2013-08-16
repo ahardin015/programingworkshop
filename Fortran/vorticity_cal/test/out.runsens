@@ -1,6 +1,6 @@
 Warning: no access to tty (Bad file descriptor).
 Thus no job control in this shell.
-Fri Aug 16 14:01:49 CDT 2013
+Fri Aug 16 17:34:49 CDT 2013
  Doing ICs
    WRF Domain dimensions of file         259         178          38
  Doing            5 total times
@@ -23,16 +23,9 @@ Fri Aug 16 14:01:49 CDT 2013
  Dimensions defined
  output variables defined
  writing data for index           1
- in write_variable2d module
- checkpoint 1
- checkpoint2
-         -39
- NETCDF ERROR !!!!!!!!
- 
- Error occurs at write_variable2d
- With variable WS10
- Netcdf message 
- NetCDF: Operation not allowed in define mode                                   
-  
- ix iy iz it         258         177           0           1
-Fri Aug 16 14:01:49 CDT 2013
+ writing data for index           2
+ writing data for index           3
+ writing data for index           4
+ writing data for index           5
+ Done with main sensitivity program
+Fri Aug 16 17:34:49 CDT 2013

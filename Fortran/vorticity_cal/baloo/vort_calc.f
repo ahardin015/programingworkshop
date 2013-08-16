@@ -23,16 +23,15 @@
 
 !-----------------------------------------------------------------------
 
-! IC CALCULATIONS
+! GET DIMENSIONS
       if (msg) print*, 'Doing ICs'
       call get_dimensions(infile,permissr,iunit1,mix,mjx,mkx)
       if (msg) print*, '  WRF Domain dimensions of file', mix,mjx,mkx
       ntimes=end_time-st_time+1
       if (msg) print*, 'Doing ', ntimes, 'total times'
-!      allocate(u10(mix-1,mjx-1))
-!      allocate(v10(mix-1,mjx-1))
       allocate(ws(mix-1,mjx-1,ntimes))
       if (msg) print*, '  Arrays allocated'
+
 ! READ DATA
       do t=1,ntimes
          tmod = st_time+t-1
@@ -44,17 +43,16 @@
          call get_variable2d(iunit1,'V10',mix-1,mjx-1,tmod,v10)
          call close_file(iunit1)
          if (msg) print*, '   Finished reading time',tmod
-! WIND CALCULATIONS
+
+! CALCULATE WIND SPEED
          ws(:,:,t)=sqrt(u10**2+v10**2)
          deallocate(u10)
          deallocate(v10)
       enddo
       print*,size(ws)
-        ! J loop then I loop to find vorticity
       if (msg) print*, 'calcualtions done'
 
-! WRITE OUTPUT
-
+! WRITE OUTPUT NETCDF
       ! Create the netcdf file with output name
       rcode=nf_create(outfile,NF_CLOBBER,ncid)      
       if (debug) print*, 'Created output file', outfile
@@ -64,20 +62,18 @@
       rcode=nf_def_dim(ncid,'west_east',mix-1,xdim)
       if (debug) print*, 'Dimensions defined'
       
+      ! Define variable
       rcode=nf_def_var(ncid,'WS10',NF_FLOAT,3,(/xdim,ydim,tdim/),varid)
       rcode=nf_put_att_text(ncid,varid,'description',13,'10m_windspeed')
       rcode=nf_put_att_text(ncid,varid,'units',3,'m/s')
-!      rcode=nf_put_att_real(ncid,varid,'_FillValue',NF_FLOAT,1,miss)
       if (debug) print*, 'output variables defined'
-
-
 
       do k=1,ntimes
          if (debug) print*, 'writing data for index', k
-         call write_variable2d(ncid,'WS10',mix-1,mjx-1,k,ws(:,:,k))
+        ! write_var2d isn't working (dimensions issue, likely t dim)
+        ! call write_variable2d(ncid,'WS10',mix-1,mjx-1,k,ws(:,:,k))
       enddo
       call close_file(ncid)
-
 
       if (msg) print*,'Done with main sensitivity program'
       END PROGRAM
@@ -98,7 +94,3 @@
       call close_file(iunit1)
       END SUBROUTINE GET_DIMENSIONS
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
-
-
