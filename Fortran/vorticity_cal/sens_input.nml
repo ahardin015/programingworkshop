@@ -1,0 +1,44 @@
+&sens_input
+ensnum = 48
+infilebaseinit = '/home/smith292/sensitivity/data/wrfout_full_mem'
+infilebaseresp = '/home/smith292/sensitivity/data/wrfout_full_mem'
+ic_ftype='wrfout'
+rp_ftype='wrfout'
+outfile = 'peak_tm_test'
+
+starttime = 0
+endtime = 20
+plt_int = 1
+model_files_per_hour = 4
+num_initvars = 2
+initvar3d = 'T','GPH'
+initdescrip3d = 'Temperature','Geopotential height'
+initunits3d = 'k','m'
+initvar2d = 'SLP','T2'
+initdescrip2d = 'Sea level pressure','2m temperature','10m Wind Speed','2m mixing ratio'
+initunits2d = 'mb','k','m/s','g/kg'
+num_initlevels = 2
+initlevels = 850.,500.
+initvertunit = 'P'
+
+resp_type = 'PEAK_TM'
+t_resp_st =  60
+t_resp_end = 97
+responsevar = 'WIND10'
+respdescrip = '10m Wind Speed'
+respunits = 'm/s'
+responselevel1 = 500.
+responselevel2 = 350.
+respvertunit = 'm/s'
+respx = 166
+respy = 79
+dx = 0
+dy = 0
+
+scatter = .false.
+scatterx = 20
+scattery = 23
+
+msg = .true.
+debug = .false.
+/ 

@@ -1,0 +1,10 @@
+&vort_input
+infile = '/home/smith292/sensitivity/data/wrfout_full_mem.1'
+outfile = 'test_voricity_output'
+
+st_time  = 3
+end_time = 7
+
+msg = .true.
+debug = .true.
+/ 
