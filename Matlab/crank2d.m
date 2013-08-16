@@ -2,6 +2,7 @@ clear all
 %%%%%%%%%%%%%2-D ADVECTION CRANK-NICOLSON METHOD%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%Create a cyclonic wind field%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 for i=1:25
     for j=1:25
         x=i-13;
@@ -21,26 +22,27 @@ for i=1:25
         
     end
 end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-disp('This is the wind field')
-figure
-quiver(u,v)
-title('u-v wind vectors')
-xlabel('x')
-ylabel('y')
+% disp('This is the wind field')
+% figure
+% quiver(u,v)
+% title('u-v wind vectors')
+% xlabel('x')
+% ylabel('y')
+% pause(5) %pause for 5 seconds
 
-pause(5) %pause for 5 seconds
-
+%set parameters and conditions%%%%%%%%%%%%%%%%%%%
 dt=5/60; %5min to hours
 dx=4; %km
 % %Initial conditions of 2-d pollution plume
 x1=zeros(25,25);
-x1(2:6,2:6)=100;
+x1(3:7,3:7)=100;
 matmax=23; %for indexing purposes
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 initial_total=sum(sum(x1));
 
-for t=1:300
+for t=1:300 %go through time steps
     
     %%%%%COLUMN V-COMPONENT
     for a=2:24
@@ -66,7 +68,6 @@ for t=1:300
     
     end
     
-    
     %%%%ROW U-COMPONENT
     for b=2:24
     B= u(b,1)*dt/(4*dx);
@@ -88,7 +89,6 @@ for t=1:300
     end
     clear z
     
-    
     x1(b,2:24)=coeff\knowns_u(b-1,:)';
     end
     
@@ -96,15 +96,17 @@ for t=1:300
     mass_conservation_ratio(t)=total/initial_total;
     mass_distribution_ratio(t)=total^2 / initial_total^2;
     
-   blah=rem(t,50); %remainder of t/50
-    if t==1 || blah==0
+    %create a 3-d surface plot every 50 time steps
+    blah=rem(t,50); %remainder of t/50
+    if t==1 || blah==0 %or statement
     surf(x1(1:25,1:25));figure(gcf);
     title(['Time step: ' num2str(t)])
     pause(1) %pause for 1 sec for illustrative purposes
     end
+    
 end
 
-%plotting time
+%Mass conservation plots
 figure
 plot(1:t,mass_conservation_ratio)
 hold on
