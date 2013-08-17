@@ -1,0 +1,31 @@
+Warning: no access to tty (Bad file descriptor).
+Thus no job control in this shell.
+Fri Aug 16 17:34:49 CDT 2013
+ Doing ICs
+   WRF Domain dimensions of file         259         178          38
+ Doing            5 total times
+   Arrays allocated
+ Doing time            1 index           3
+    Finished reading time           3
+ Doing time            2 index           4
+    Finished reading time           4
+ Doing time            3 index           5
+    Finished reading time           5
+ Doing time            4 index           6
+    Finished reading time           6
+ Doing time            5 index           7
+    Finished reading time           7
+      228330
+ calcualtions done
+ Created output file
+ test_voricity_output                                                           
+                      
+ Dimensions defined
+ output variables defined
+ writing data for index           1
+ writing data for index           2
+ writing data for index           3
+ writing data for index           4
+ writing data for index           5
+ Done with main sensitivity program
+Fri Aug 16 17:34:49 CDT 2013

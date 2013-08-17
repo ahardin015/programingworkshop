@@ -1,0 +1,33 @@
+#cp /share/apps/examples/dot-bashrc ~/.bashrc
+#these must me here for .soft to work
+. /lustre/work/apps/softenv/etc/softenv-load.sh
+. /lustre/work/apps/softenv/etc/softenv-aliases.sh
+#leave these for parallel computing
+ulimit -s unlimited 1>/dev/null 2>/dev/null
+ulimit -l unlimited 1>/dev/null 2>/dev/null
+#set prompt, optional
+PS1='`/bin/hostname -s`:`echo $PWD | sed "s=$HOME=="`$ '
+#leave this to properly set recursive softenv scripts
+#resoft
+#after creating .bashrc, link this to .profile
+#cd;ln -is .bashrc .profile
+export PATH=/home/areinhar/ncl/bin:/home/areinhar/netcdf/bin:/lustre/work/apps/nco-3.9.7/bin:/lustre/work/apps/ImageMagick/bin:$PATH
+export NCARG_ROOT=/home/areinhar/ncl
+export LD_LIBRARY_PATH=/lustre/work/apps/netpbm/lib:/lustre/work/apps/szip/lib:$LD_LIBRARY_PATH
+export NETCDF=/home/areinhar/netcdf
+
+
+alias work='cd /lustre/work/smith292'
+alias l='ls -l'
+alias sub='cd /lustre/work/smith292/NWP/sub'
+alias nwp='cd /lustre/work/smith292/NWP'
+alias wp='cd /lustre/work/smith292/NWP/WPSV3.3'
+alias lt='ls -ltr'
+alias space_work='du -h --max-depth=1 /lustre/work/smith292'
+alias space_home='du -h --max-depth=1 /home/smith292'
+alias diskspace='echo du -h --max-depth=1 /lustre/work/smith292'
+alias vi='vim'
+alias xanim?='echo /lustre/work/apps/xanim2801/xanim .gif'
+alias qall='qstat -u "*" '
+alias dis='display'
+
