@@ -13,4 +13,7 @@ The following programs will be used today:
 * C and FORTRAN compliers (gnu or intel)
 * Git (git.com)
 * NCL (ncl.ucar.edu)
-* 
+*
+
+Using DOIs for citations: http://crosstech.crossref.org/2011/11/turning_dois_into_formatted_ci.html
+ 
