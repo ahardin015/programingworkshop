@@ -7,7 +7,7 @@ directory
 '''
 
 year  = '12' # Last two digits only
-month = '05' # Two digit month
+month = '06' # Two digit month
 
 host = 'llj.wind.ttu.edu'
 port = 22
