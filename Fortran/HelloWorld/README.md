@@ -72,7 +72,7 @@ and you should see "Hello World!" appear in the terminal.
 
 Compiling Using Makefiles
 
-Unix nd Linux systems are often distributed with a utility called "make" with reads in a special file called a Makefile with helps to make 
+Unix and Linux systems are often distributed with a utility called "make" with reads in a special file called a Makefile with helps to make 
 the compilation process simpler. Each of the example programs we'll use will also have a Makefile included to mae compilation easier. To 
 compile all of the program(s) in a file at once, you simply need to type "make" at the terminal, and make will read through the dependencies 
 in the Makefile to create a properly configured executable program. 
